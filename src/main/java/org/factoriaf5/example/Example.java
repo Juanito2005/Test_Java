@@ -68,7 +68,9 @@ public class Example {
 
     // 9. Método para convertir una lista de enteros a lista de strings
     public List<String> convertirAString(List<Integer> lista) {
-        return lista.stream()
+        return lista.stream() // una secuencia de elementos que puedes a la que le puedes
+        // aplicar metodos especifficos: map, filter, collect...
+        // map: dice que va a modificar todos los elementos de un stream
                 .map(String::valueOf)
                 .collect(Collectors.toList());
     }
