@@ -98,9 +98,24 @@ public class ExampleTest {
         boolean result = example.esPrimo(numero);
         assertFalse(result1);
         assertFalse(result);
+        assertTrue(result != true);
+        assertInstanceOf(Boolean.class, result1);
         // antes me dió error porque puse que esperaba un boolean de tipo primitivo
         // y no el boolean de tipo objeto
         assertInstanceOf(Boolean.class, result);
+    }
+    @Test
+    public void testEsPrimoNumerosGrandes() {
+        Example example = new Example();
+        assertTrue(example.esPrimo(17));
+        assertFalse(example.esPrimo(20));
+    }
+    @Test
+    public void testEsPrimoNumerosNoPrimos() {
+        Example example = new Example();
+        assertFalse(example.esPrimo(0));
+        assertFalse(example.esPrimo(1));
+        assertFalse(example.esPrimo(-5));
     }
     @Test
     public void testMensajeConRetraso() {
@@ -150,6 +165,14 @@ public class ExampleTest {
             example.calcularMedia(numeros1);
         });
     }
+    
+    @Test
+    public void testCalcularMediaLanzaExcepcion() {
+        Example example = new Example();
+        assertThrows(IllegalArgumentException.class, () -> example.calcularMedia(null));
+        assertThrows(IllegalArgumentException.class, () -> example.calcularMedia(Collections.emptyList()));
+    }
+
     @Test
     public void testconvertirListaAString () {
         List<String> lista = Arrays.asList("Hola", "que", "tal");
