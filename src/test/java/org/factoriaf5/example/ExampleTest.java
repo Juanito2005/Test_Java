@@ -126,9 +126,34 @@ public class ExampleTest {
         }
     }
     @Test
+    public void testMensajeConRetraso2 () {
+        try {
+            String result = example.mensajeConRetraso();
+            assertEquals("Listo después de retraso", result);
+        } catch (InterruptedException e) {
+            System.out.println("no se que se pone aquí");
+        }
+    }
+    @Test
     public void testconvertirAString () {
         List<Integer> numeros = Arrays.asList(1,2,3,4,5);
         List<String> result = example.convertirAString(numeros);
         assertEquals(Arrays.asList("1","2","3","4","5"), result);
+    }
+    @Test
+    public void testcalcularMedia () {
+        List<Integer> numeros = Arrays.asList(1,2,3,4,5);
+        List<Integer> numeros1 = Arrays.asList();
+        Double result = example.calcularMedia(numeros);
+        assertEquals(3.0, result);
+        assertThrows(IllegalArgumentException.class, () -> {
+            example.calcularMedia(numeros1);
+        });
+    }
+    @Test
+    public void testconvertirListaAString () {
+        List<String> lista = Arrays.asList("Hola", "que", "tal");
+        String result = example.convertirListaAString(lista);
+        assertEquals("HOLA,QUE,TAL", result);
     }
 }
